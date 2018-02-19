@@ -1,18 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe ProductsController, type: :controller do
+RSpec. describe ProductsController, type: :controller do
 
-  describe "GET #new" do
-    it "returns http success" do
+  describe "new action" do
+    it "" do
       get :new
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+  describe "create action" do
+    it "redirect to products list if product save" do
+      post :create, product: { title: 'Item', price: '100' }
+      expect redirect_to(products_path)
+    end
+
+    it "renders new phe again if product not save" do
+      post :create, product: { title: 'Item', price: nil }
+      expect render_template('new')
     end
   end
 

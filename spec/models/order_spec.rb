@@ -1,5 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Order, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Order do
+  
+  it "calculates the subtotal price" do
+      item1 = OrderItem.new(unit_price: 100)
+      item2 = OrderItem.new(unit_price: 200)
+
+      order = Order.new
+      order.subtotal
+      order.subtotal = 300
+  end
+
 end
